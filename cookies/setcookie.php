@@ -3,7 +3,7 @@
 function redirect(string $msg = ''): void {
     
     if (!empty($msg)) {
-        header('Location: ./index.php?msg='.$msg);
+        header('Location: ./index.php?msg='.urlencode($msg));
         exit;
     }
 
@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             redirect("Invalid cookie value");
         }
 
-        $cookieName = htmlspecialchars($_POST['name']);
-        $cookieValue = htmlspecialchars($_POST['value']);  
+        $cookieName = $_POST['name'];
+        $cookieValue = $_POST['value'];  
 
         setcookie($cookieName, $cookieValue);
     } catch (Error $e) {

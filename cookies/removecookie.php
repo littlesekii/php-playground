@@ -3,7 +3,7 @@
 function redirect(string $msg = ''): void {
     
     if (!empty($msg)) {
-        header('Location: ./index.php?msg='.$msg);
+        header('Location: ./index.php?msg='.urlencode($msg));
         exit;
     }
 
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             redirect();
         }
 
-        $cookieName = htmlspecialchars($_GET['name']);
+        $cookieName = $_GET['name'];
 
         setcookie($cookieName, '', -1);
     } catch (Error $e) {}

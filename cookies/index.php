@@ -42,6 +42,6 @@
 <p><strong>Active cookies:</strong></p>
 <ul>
     <?php foreach ($_COOKIE as $key => $val): ?>
-        <li><?= $key . ' - ' . $val . ' | ' ?> <a href=<?= './removecookie.php?name='.$key ?>>Remove</a></li>
+        <li><?= htmlspecialchars($key) . ' - ' . htmlspecialchars($val) . ' | ' ?> <a href=<?= './removecookie.php?name='.$key ?>>Remove</a></li>
     <? endforeach; ?>
 </ul>
